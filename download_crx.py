@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 import requests, json,time
 
@@ -46,5 +46,5 @@ class Demo():
             self.urlManager.getPage(u)
 
 if __name__ == "__main__":
-    obj_spider = Demo()
-    obj_spider.craw()
+    spider = Demo()
+    spider.craw()
