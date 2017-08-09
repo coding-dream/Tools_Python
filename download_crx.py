@@ -2,8 +2,7 @@
 # -*- coding: UTF-8 -*-
 import requests, json,time
 
-# baseUrl = "https://ext.chrome.360.cn/provider/extlist/?category=全部&count=20&sortType=download&token=" # 50 页
-baseUrl = "https://ext.chrome.360.cn/provider/extlist/?category=全部&count=100&sortType=download&token="
+baseUrl = "https://ext.chrome.360.cn/provider/extlist/?category=全部&count=100&sortType=download&token=" # 50 页
 class UrlManager():
     def getPage(self,page):
         currentPage = baseUrl + str(page)
