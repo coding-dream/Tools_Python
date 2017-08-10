@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
         baseVideoUrl = "http://k.syasn.com/" + category + "/"
 
-        if flag == 'quit':
+        if category == 'quit' or name == 'quit':
             flag = False
         else:
             parseFor(name)
