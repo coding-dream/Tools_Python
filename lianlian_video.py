@@ -5,7 +5,7 @@ __author__ = 'limitless'
 """
     blog : http://www.jianshu.com/u/79a88a044955
     use:
-    1. python LianLianVideo.py
+    1. python lianlian_video.py
     2. 输入url类别(如分类地址  http://v.23c.im/rs 填写 rs)
     3. 输入url名称(如视频地址 http://v.23c.im/rs148 填写 rs148)
 """
