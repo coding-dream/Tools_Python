@@ -445,6 +445,99 @@ class Sample13(Sample):
         btn_comfirm_sign_up = tk.Button(window_sign_up, text='Sign up', command=submit)
         btn_comfirm_sign_up.place(x=150, y=130)
 
+class Sample14(Sample):
+    """
+        text    显示文本内容
+        command 指定Button的事件处理函数
+        compound 指定文本与图像的位置关系
+        bitmap 指定位图
+        focus_set 设置当前组件得到的焦点
+        master 代表了父窗口
+        bg 设置背景颜色
+        fg 设置前景颜色
+        font 设置字体大小
+        height 设置显示高度、如果未设置此项，其大小以适应内容标签
+        relief 指定外观装饰边界附近的标签,默认是平的,可以设置的参数; flat、groove、raised、ridge、solid、sunken 
+        width 设置显示宽度，如果未设置此项，其大小以适应内容标签
+        wraplength 将此选项设置为所需的数量限制每行的字符,数默认为0
+        state 设置组件状态;正常(normal),激活(active),禁用(disabled)
+        anchor 设置Button文本在控件上的显示位置 ,可用值:n(north),s(south),w(west),e(east),和ne,nw,se,sw
+        bd 设置Button的边框大小;bd(bordwidth)缺省为1或2个像素
+        textvariable 设置Button与textvariable属性
+    """
+    def __init__(self):
+        super().__init__()
+
+    def start(self):
+        window = tk.Tk()
+        window.title("the window")
+        window.geometry('500x800')
+
+        RELIEF = ["flat", "raised", "sunken", "solid", "ridge", "groove"]
+        for i in range(len(RELIEF)):
+            tk.Button(window, text='change foreground', fg='red',bg='gray',relief=RELIEF[i]).pack() # fg 字体颜色 bg 背景颜色 relief(flat, groove, raised, ridge, solid, or sunken)
+            tk.Label(text='',padx=10,pady=10).pack() # 使用Label 作 margin
+
+        tk.Button(window, text="外观装饰边界附近的标签", width=19, relief=tk.GROOVE, bg="red").pack()
+
+        tk.Button(window, text="设置按钮状态", width=21, state=tk.DISABLED).pack()
+
+        # bitmap 系统值 warning,error,gray75,gray25,gray12,hourglass,questhead,info,question,
+        tk.Button(window, text="(compound属性)设置(bitmap属性)放到按钮左边位置", compound="left", bitmap="info").pack()
+
+        tk.Button(window, text="设置高度宽度以及文字显示位置", anchor='w', width=30, height=2).pack() # 设置Button文本在控件上的显示位置可用值:n(north),s(south),w(west),e(east),和ne,nw,se,sw
+
+        tk.mainloop()
+
+
+class Sample15(Sample):
+    """
+    Grid布局 row第几行 column第几列 下标从0开始 
+    注意：不要试图在一个主窗口中混合使用pack和grid。
+    你不用事先指定每个网格的大小，布局管理器会自动根据里面的控件进行调节
+    注意：1.在使用grid方法时，如果不指定column参数，则默认从0开始。
+          2.没有被使用的行和列号将被忽略，在上面的例子中如果使用10行和20行，则运行效果是一样的。
+          3.你同样可以指定控件跨越一个或者多个网格。columnspan选项可以指定控件跨越多列显示，而rowspan选项同样可以指定控件跨越多行显示。
+          4.padx=5, pady=5 padding值
+          5.sticky:设置对齐方式，如果未设置对齐方式，默认为将控件放置在窗体中间
+                    如果未设置对齐方式，默认为将控件放置在窗体中间。对齐方式主要有如下几种：
+                1） 通过使用sticky=NE(右上角)，SE（右下角），SW（左下角），NW（左上角）来设置控件位置
+                2） 通过使用sticky=N（上中）,E（右中），S（底中）,W（左中）来设置控件放置中间位置
+                3） sticky=N+S，向垂直方向拉升而保持水平中间对齐
+                4） sticky=E+W，向水平方向拉升而保持垂直中间对齐
+                5)   sticky=N+E+S+W，以水平方向和垂直方向拉升的方式填充单元格
+    """
+    def __init__(self):
+        super().__init__()
+
+    def start(self):
+        window = tk.Tk()
+        window.title("the window")
+        window.geometry('500x500')
+
+        tk.Label(window, text="First").grid(row=0)
+        tk.Label(window, text="Second").grid(row=1)
+
+        tk.Entry(window).grid(row=0,column=1)
+        tk.Entry(window).grid(row=1,column=1)
+
+        tk.Button(window,text='button').grid(row=2,column=1)
+
+        var = tk.IntVar()
+        tk.Checkbutton(window, text='Preserve aspect', variable=var).grid(columnspan=2, sticky=tk.W)
+
+        photo = tk.PhotoImage(file='test.png')
+        label = tk.Label(image=photo)
+        label.grid(row=0, column=2, columnspan=2, rowspan=2, sticky=tk.W + tk.E + tk.N + tk.S, padx=5, pady=5) # pady padding
+
+        button1 = tk.Button(window, text='Zoom in')
+        button1.grid(row=2, column=2)
+
+        button2 = tk.Button(window, text='Zoom out')
+        button2.grid(row=2, column=3)
+
+        tk.mainloop()
+
 if __name__ == "__main__":
-    sample = Sample9()
+    sample = Sample7()
     sample.start()
