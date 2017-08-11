@@ -487,6 +487,9 @@ class Sample14(Sample):
 
         tk.Button(window, text="设置高度宽度以及文字显示位置", anchor='w', width=30, height=2).pack() # 设置Button文本在控件上的显示位置可用值:n(north),s(south),w(west),e(east),和ne,nw,se,sw
 
+        imgBtn = tk.PhotoImage(file='test.png') # 图片按钮
+        tk.Button(image=imgBtn).pack()
+
         tk.mainloop()
 
 
@@ -539,5 +542,5 @@ class Sample15(Sample):
         tk.mainloop()
 
 if __name__ == "__main__":
-    sample = Sample7()
+    sample = Sample14()
     sample.start()
