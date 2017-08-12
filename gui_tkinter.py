@@ -542,5 +542,6 @@ class Sample15(Sample):
         tk.mainloop()
 
 if __name__ == "__main__":
+    # datas = [("test.png", "C:\\Users\\Administrator\\Desktop\\work\\laji", "DATA")],
     sample = Sample14()
     sample.start()
