@@ -21,11 +21,11 @@ def refreshBrowser(url):
 	times = 0
 	while flag:
 		times+=1
-		if times > 6:
+		if times > 100:
 			flag = False
 		else:
 			browser.refresh()
-			time.sleep(3)
+			time.sleep(1)
 
 if __name__ == '__main__':
 	print("start")
@@ -42,11 +42,14 @@ if __name__ == '__main__':
 	browser.maximize_window() # 浏览器最大化
 
 	try:
-		urls = gatherUrls(page=1)
+		urls = gatherUrls(1)
+		urls2 = gatherUrls(2)
+		urls.extend(urls2)
+
 		for url in urls:
 			print("current page is " + url)
 			refreshBrowser(url)
-			time.sleep(8) # 
+			time.sleep(4) # 
 
 		browser.quit()
 		print("end")
